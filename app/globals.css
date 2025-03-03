@@ -1,24 +1,62 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* In Tailwind v4, the directives are simplified */
+/* No need for @tailwind base/components/utilities separately */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Tailwind v4 uses CSS syntax instead of @layer */
+@layer {
+  .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .btn-primary {
+    background-color: rgb(59, 130, 246);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(37, 99, 235);
+  }
+  
+  .btn-danger {
+    background-color: rgb(239, 68, 68);
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: rgb(220, 38, 38);
+  }
+  
+  .btn-warning {
+    background-color: rgb(245, 158, 11);
+    color: white;
+  }
+  
+  .btn-warning:hover {
+    background-color: rgb(217, 119, 6);
+  }
+  
+  .btn-secondary {
+    background-color: rgb(107, 114, 128);
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgb(75, 85, 99);
+  }
 }

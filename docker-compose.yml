@@ -1,0 +1,23 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_container
+    restart: unless-stopped
+    environment:
+      SA_PASSWORD: "*************"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "2g"
+        reservations:
+          cpus: "0.5"
+          memory: "1g"
+
+volumes:
+  mssql_data:
